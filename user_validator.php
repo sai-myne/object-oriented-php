@@ -16,7 +16,7 @@ class UserValidator{
     public function validateForm(){
         foreach(self::$fields as $field){
             if(!array_key_exists($field, $this->data)){
-                trigger_error("$field is not present in data");
+                trigger_error("'$field' is not present in data");
                 return;
             }
         }
@@ -31,7 +31,7 @@ class UserValidator{
         if(empty($val)){
             $this->addError('username', 'username cannot be empty');
         } else {
-            if(!preq_match('/^[a-zA-Z0-9]{6,12}$/', $val)){
+            if(!preg_match('/^[a-zA-Z0-9]{6,12}$/', $val)){
                 $this->addError('username', 'username must be 6-12 chars & alphanumeric');
             }
         }
@@ -50,7 +50,7 @@ class UserValidator{
         }
     }
 
-    private function addError($key, $value){
+    private function addError($key, $val){
         $this->errors[$key] = $val;
     }
 
