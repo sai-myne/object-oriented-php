@@ -2,25 +2,27 @@
 
     class User {
 
-        public $username = 'ryu';
-        public $email = 'ryu@thenetninja.co.uk';
+        public $username;
+        public $email;
 
-        public function addFriend(){
-            
+        public function __construct($username, $email){
+            $this->username = $username;
+            $this->email = $email;
+        }
+
+        public function addFriend(){            
             return "$this->email added a new friend";
         }
 
     }
 
-    $userOne = new User();
-    $userTwo = new User();
+    $userOne = new User('mario', 'mario@thenetninja.co.uk');
+    $userTwo = new User('luigi', 'luigi@thenetninja.co.uk');
 
     echo $userOne->username . '<br>';
     echo $userOne->email . '<br>';
     echo $userOne->addFriend() . '<br>';
 
-    $userTwo->username = 'yoshi';
-    $userTwo->email = 'yoshi@thenetninja.co.uk';
 
     // print_r(get_class_vars('User'));
     // print_r(get_class_methods('User'));
