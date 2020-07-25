@@ -1,31 +1,9 @@
 <?php 
 
-    class Weather{
-        private static $tempConditions = ['cold', 'mild', 'warm'];
-
-        public static function clesiusToFarenheit($c){
-            return $c * 9 / 5 + 32;
-        }
-
-        public static function determineTempCondition($f){
-            if($f < 40){
-                return self::$tempConditions[0];// cold
-            } else if($f < 70){
-                return self::$tempConditions[1];//mild;
-            } else {
-                return self::$tempConditions[2];//warm
-            }
-        }
-
+    if(isset($_POST['submit'])){
+        // validate entries
+        echo 'form submitted';
     }
-
-    // print_r(Weather::$tempConditions);
-    // echo Weather::clesiusToFarenheit(20);
-
-    echo Weather::determineTempCondition(20);
-
-
-
 
 ?>
 
@@ -34,8 +12,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP OOP Tutorial</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     
+
+    <div class="new-user">
+        <h2>Create new user</h2>
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+        
+            <label>Username</label>
+            <input type="text" name="username">
+
+            <label>Email:</label>
+            <input type="text" name="email">
+
+            <input type="submit" value="submit" name="submit">
+
+        </form>
+    </div>
 </body>
-</html>
+</html> 
